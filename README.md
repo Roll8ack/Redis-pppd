@@ -22,6 +22,8 @@ Move it to /usr/lib/pppd/<Current pppd version>/ :
 Add the following line to your pppd config file:
 
 	plugin redis-pppd.so
+	redis_host 127.0.0.1
+	redis_port 6379
 	
 Enjoy it!
 
