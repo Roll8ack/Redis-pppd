@@ -8,12 +8,12 @@
 
 char pppd_version[] = VERSION;
 
-char *RedisHost = NULL;
-char *RedisPort = NULL;
+char *redisHost = NULL;
+char *redisPort = NULL;
 
 static option_t options[] = {
-    { "redis_host", o_string, &RedisHost, "Set Redis Server Ip Address" },
-    { "redis_port", o_string, &RedisPort, "Set Redis Server Port" },
+    { "redis_host", o_string, &redisHost, "Set Redis Server Ip Address" },
+    { "redis_port", o_string, &redisPort, "Set Redis Server Port" },
     { NULL }
 };
 
@@ -75,7 +75,7 @@ void plugin_init(void) {
     chap_verify_hook = pppdChapVerify;
     allowed_address_hook = checkAddressAllowed;
 
-    if (connectRedis(RedisHost, (uint32_t)atoi(RedisPort))) {
+    if (connectRedis(redisHost, (uint32_t)atoi(redisPort))) {
         error("Failed to load plugin redis-pppd.\n");
         exit(1);
     }
